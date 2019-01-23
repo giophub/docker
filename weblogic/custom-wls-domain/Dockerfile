@@ -37,7 +37,9 @@ COPY container-scripts/* /u01/oracle/
 
 #Create directory where domain will be written to
 USER root
-RUN chmod +xw /u01/oracle/*.sh && \
+RUN chown -R oracle:oracle /u01/oracle/*.sh && \
+    chown -R oracle:oracle /u01/oracle/*.py && \
+    chmod +xw /u01/oracle/*.sh && \
     chmod +xw /u01/oracle/*.py && \
     mkdir -p $PRE_DOMAIN_HOME && \
     chown -R oracle:oracle $PRE_DOMAIN_HOME && \
